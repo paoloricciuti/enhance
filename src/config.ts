@@ -1,9 +1,9 @@
-import Markdown from 'reveal.js/plugin/markdown/markdown'
-import Highlight from 'reveal.js/plugin/highlight/highlight'
-import Math from 'reveal.js/plugin/math/math'
-import Notes from 'reveal.js/plugin/notes/notes'
+import Markdown from 'reveal.js/plugin/markdown/markdown';
+import Highlight from 'reveal.js/plugin/highlight/highlight';
+import Math from 'reveal.js/plugin/math/math';
+import Notes from 'reveal.js/plugin/notes/notes';
 
-import { registerLanguages } from '@languages'
+import { registerLanguages } from '@languages';
 
 const options: Reveal.Options = {
 	// presentation size respecting aspect ratio
@@ -21,7 +21,7 @@ const options: Reveal.Options = {
 		// add new languages
 		beforeHighlight: registerLanguages,
 		// disable automatic syntax highlighting
-		highlightOnLoad: false,
+		highlightOnLoad: false
 	},
 	// slide controls
 	controls: true,
@@ -53,7 +53,7 @@ const options: Reveal.Options = {
 		to update the store values.
 	*/
 	hash: true,
-	history: true,
-}
+	history: true
+};
 
-export default options
+export default options;
