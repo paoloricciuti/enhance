@@ -2,17 +2,29 @@
 	import { Presentation, Slide } from '@components';
 	import type { Props } from '@slides/types';
 	import type { ComponentType, SvelteComponent } from 'svelte';
-	const slides = import.meta.glob<{
-		default: ComponentType<SvelteComponent>;
-		component?: ComponentType<SvelteComponent>;
-		props?: Props;
-	}>('../slides/**/index.svelte', {
-		eager: true
+	const slides = Object.entries(
+		import.meta.glob<{
+			default: ComponentType<SvelteComponent>;
+			component?: ComponentType<SvelteComponent>;
+			props?: Props;
+		}>('../slides/**/index.svelte', {
+			eager: true
+		})
+	).toSorted(([keyA], [keyB]) => {
+		const import_regex = /\.\.\/slides\/(?<num>\d+)\/index.svelte/;
+		const { groups: groupsA } = keyA.match(import_regex) ?? {};
+		const { groups: groupsB } = keyB.match(import_regex) ?? {};
+		if (groupsA && groupsB) {
+			return +groupsA.num - +groupsB.num;
+		}
+		return 0;
 	});
+	console.log(slides);
 </script>
 
 <Presentation>
-	{#each Object.values(slides) as slide}
+	{#each slides as slide_arr}
+		{@const [, slide] = slide_arr}
 		<svelte:component this={slide.component ?? Slide} {...slide.props ?? {}}>
 			<svelte:component this={slide.default} />
 		</svelte:component>

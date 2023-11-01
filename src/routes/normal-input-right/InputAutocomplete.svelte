@@ -11,7 +11,7 @@
 	<input
 		autocomplete="off"
 		name="search"
-		class="shadow-md w-full p-2"
+		class="shadow-md w-full p-2 border-[1px] border-slate-200"
 		bind:value
 		on:input={fectch_suggestions}
 	/>
