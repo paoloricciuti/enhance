@@ -50,3 +50,11 @@
 >
 	<slot />
 </section>
+
+<style>
+	section {
+		height: 100%;
+		display: grid !important;
+		place-items: center;
+	}
+</style>

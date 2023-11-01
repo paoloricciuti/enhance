@@ -22,6 +22,9 @@ const config = {
 			'@lib': path.resolve(process.cwd(), './src/lib'),
 			'@stores': path.resolve(process.cwd(), './src/lib/stores'),
 			'@styles': path.resolve(process.cwd(), './src/lib/styles')
+		},
+		csrf: {
+			checkOrigin: false
 		}
 	}
 };
