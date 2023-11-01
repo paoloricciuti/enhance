@@ -1,3 +1,3 @@
-import hljs from 'highlight.js'
+import type hljs from 'highlight.js';
 
-export type Hljs = typeof hljs
+export type Hljs = typeof hljs;

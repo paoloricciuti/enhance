@@ -1,42 +1,35 @@
 <script context="module" lang="ts">
-	let index = 0
+	let index = 0;
 </script>
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte'
-	import { navigation } from '@stores/navigation'
+	import { createEventDispatcher } from 'svelte';
+	import { navigation } from '@stores/navigation';
 
-	type Bool = boolean | null
-	type String = string | null
-	type Transition =
-		| 'none'
-		| 'fade'
-		| 'slide'
-		| 'convex'
-		| 'concave'
-		| 'zoom'
-		| null
+	type Bool = boolean | null;
+	type StringOrNull = string | null;
+	type Transition = 'none' | 'fade' | 'slide' | 'convex' | 'concave' | 'zoom' | null;
 
-	export let animate: Bool = null
-	export let animateEasing: String = null
-	export let animateUnmatched: Bool = null
-	export let animateId: String = null
-	export let animateRestart: Bool = null
-	export let background: String = null
-	export let gradient: String = null
-	export let image: String = null
-	export let video: String = null
-	export let iframe: String = null
-	export let interactive: Bool = null
-	export let transition: Transition = null
+	export let animate: Bool = null;
+	export let animateEasing: StringOrNull = null;
+	export let animateUnmatched: Bool = null;
+	export let animateId: StringOrNull = null;
+	export let animateRestart: Bool = null;
+	export let background: StringOrNull = null;
+	export let gradient: StringOrNull = null;
+	export let image: StringOrNull = null;
+	export let video: StringOrNull = null;
+	export let iframe: StringOrNull = null;
+	export let interactive: Bool = null;
+	export let transition: Transition = null;
 
-	const dispatch = createEventDispatcher()
-	const slideIndex = index++
+	const dispatch = createEventDispatcher();
+	const slideIndex = index++;
 
-	$: enter = $navigation.currentSlide === slideIndex
-	$: enter ? dispatch('in') : dispatch('out')
+	$: enter = $navigation.currentSlide === slideIndex;
+	$: enter ? dispatch('in') : dispatch('out');
 
-	delete $$restProps.class
+	delete $$restProps.class;
 </script>
 
 <section

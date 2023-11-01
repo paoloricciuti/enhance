@@ -1,11 +1,11 @@
-import type { Hljs } from './types'
+import type { Hljs } from './types';
 
 export function svelte(hljs: Hljs) {
 	return {
 		subLanguage: 'xml',
 		contains: [
 			hljs.COMMENT('<!--', '-->', {
-				relevance: 10,
+				relevance: 10
 			}),
 			{
 				begin: /^(\s*)(<script(\s*context="module")?>)/gm,
@@ -17,16 +17,16 @@ export function svelte(hljs: Hljs) {
 					{
 						begin: /^(\s*)(\$:)/gm,
 						end: /(\s*)/gm,
-						className: 'keyword',
-					},
-				],
+						className: 'keyword'
+					}
+				]
 			},
 			{
 				begin: /^(\s*)(<style.*>)/gm,
 				end: /^(\s*)(<\/style>)/gm,
 				subLanguage: 'css',
 				excludeBegin: true,
-				excludeEnd: true,
+				excludeEnd: true
 			},
 			{
 				begin: /\{/gm,
@@ -34,17 +34,17 @@ export function svelte(hljs: Hljs) {
 				subLanguage: 'javascript',
 				contains: [
 					{
-						begin: /[\{]/,
-						end: /[\}]/,
-						skip: true,
+						begin: /[{]/,
+						end: /[}]/,
+						skip: true
 					},
 					{
-						begin: /([#:\/@])(if|else|each|await|then|catch|debug|html)/gm,
+						begin: /([#:/@])(if|else|each|await|then|catch|debug|html)/gm,
 						className: 'keyword',
-						relevance: 10,
-					},
-				],
-			},
-		],
-	}
+						relevance: 10
+					}
+				]
+			}
+		]
+	};
 }

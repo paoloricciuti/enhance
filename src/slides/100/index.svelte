@@ -3,7 +3,7 @@
 	import enhance from './enhance.gif';
 
 	export const props: Props = {
-		image: enhance,
+		image: enhance
 	};
 </script>
 
