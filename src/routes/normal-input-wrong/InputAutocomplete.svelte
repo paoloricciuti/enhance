@@ -8,7 +8,13 @@
 </script>
 
 <div class="relative">
-	<input name="search" class="shadow-md w-full p-2" bind:value on:input={fectch_suggestions} />
+	<input
+		autocomplete="off"
+		name="search"
+		class="shadow-md w-full p-2"
+		bind:value
+		on:input={fectch_suggestions}
+	/>
 	<ul class="absolute shadow-lg bg-white w-full">
 		{#each suggestions as suggestion}
 			<li>
