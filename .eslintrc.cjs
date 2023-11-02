@@ -18,6 +18,9 @@ module.exports = {
 		es2017: true,
 		node: true
 	},
+	rules: {
+		'no-useless-escape': 'off'
+	},
 	overrides: [
 		{
 			files: ['*.svelte'],

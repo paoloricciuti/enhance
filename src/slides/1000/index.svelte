@@ -11,18 +11,18 @@
 </script>
 
 <div class="grid gap-8 text-2xl">
-	<Code lang="ts">
+	<Code lang="svelte">
 		{`<script lang="ts">
+	import Button from './Button.svelte';
 	export let data;
-</scr` +
-			`ipt>
+<\/script>
 
 <form data-sveltekit-keepfocus>
 	<input name="search"
 		on:input={(e) => {
 				e.target.form?.requestSubmit();
-		}} >
-	<SubmitButton></SubmitButton>
+		}} /\>
+	<Button /\>
 </form>
 <ul>
 	{#each data.ambassadors as ambassador}

@@ -13,21 +13,25 @@
 <div class="grid gap-8 text-2xl">
 	<Code lang="svelte">
 		{`<script lang="ts">
-	export let data;
+	import Select from './Select.svelte';
+	import Button from './Button.svelte';
+	export let form;
 <\/script>
 
-<form data-sveltekit-keepfocus>
-	<input name="search"
-		on:input={(e) => {
-				e.target.form?.requestSubmit();
-		}} /\>
+<form method="post">
+	<Select /\> <Button /\>
 </form>
-<ul>
-	{#each data.ambassadors as ambassador}
-		<li>{ambassador}</li>
-	{/each}
-</ul>
+
+{#if form?.tutorial}
+	Visit the tutorial for 
+	<strong>
+		<a href={form.tutorial.link}>
+			{form.tutorial.title}
+		</a>
+	</strong>
+{/if}
+
 `}
 	</Code>
-	<Compare title="Normal Input" src="/fallback-submit-wrong"></Compare>
+	<Compare title="Normal Input" src="/combobox-wrong"></Compare>
 </div>

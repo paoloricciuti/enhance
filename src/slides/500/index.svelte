@@ -9,11 +9,10 @@
 	import InputAutocomplete from './InputAutocomplete.svelte';
 
 	export let form;
-</scr` +
-			`ipt>
+<\/script>
 
 <form>
-	<InputAutocomplete></InputAutocomplete>
+	<InputAutocomplete /\>
 	<button>Search</button>
 </form>
 
@@ -44,7 +43,7 @@
 		name="search"
 		bind:value
 		on:input={fectch_suggestions}
-	>
+	/\>
 	<ul>
 		{#each suggestions as suggestion}
 			<li><button on:click={() => {
