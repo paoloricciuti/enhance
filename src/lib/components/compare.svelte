@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	export let title: string;
 	export let src: string;
 	export let vertical = false;
+
+	onMount(() => {});
 </script>
 
 <div
@@ -10,8 +13,20 @@
 	class:grid-rows-2={vertical}
 	class="grid gap-4 min-h-full place-items-center"
 >
-	<iframe {title} {src}></iframe>
-	<iframe {title} {src} sandbox="allow-forms"></iframe>
+	<browser-window
+		shadow
+		url="https://js"
+		style="--bw-background: #eee; --bw-shadow-hsl: 0deg 0% 0%"
+	>
+		<iframe {title} {src}></iframe>
+	</browser-window>
+	<browser-window
+		shadow
+		url="https://no-js"
+		style="--bw-background: #eee; --bw-shadow-hsl: 0deg 0% 0%"
+	>
+		<iframe {title} {src} sandbox="allow-forms"></iframe>
+	</browser-window>
 </div>
 
 <style lang="postcss">
@@ -19,7 +34,6 @@
 		border: 1px solid white;
 		width: 100%;
 		aspect-ratio: 16/9;
-		border-radius: theme(borderRadius.lg);
 		padding: theme(padding.4);
 		background-color: white;
 	}

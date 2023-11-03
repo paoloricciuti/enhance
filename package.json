@@ -36,6 +36,7 @@
 		"@fontsource-variable/manrope": "^5.0.17",
 		"@melt-ui/svelte": "^0.57.3",
 		"@types/reveal.js": "^4.4.5",
+		"@zachleat/browser-window": "^1.0.7",
 		"prettier-plugin-tailwindcss": "^0.5.6",
 		"reveal.js": "^5.0.1"
 	}

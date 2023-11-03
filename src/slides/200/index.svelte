@@ -2,7 +2,10 @@
 	import Step from '@lib/components/step.svelte';
 	import me from './me.jpg';
 	import workshop from './workshop.png';
+	import Notes from '@lib/components/notes.svelte';
 </script>
+
+<Notes>Don't forget to mention why you will ask to enhance!</Notes>
 
 <div class="flex w-full justify-between p-8">
 	<ul class="text-left text-2xl w-full">
