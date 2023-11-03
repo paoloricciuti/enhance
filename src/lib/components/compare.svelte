@@ -34,7 +34,6 @@
 		border: 1px solid white;
 		width: 100%;
 		aspect-ratio: 16/9;
-		padding: theme(padding.4);
 		background-color: white;
 	}
 	.vertical iframe {

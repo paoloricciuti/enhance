@@ -11,8 +11,11 @@
 
 <slot />
 
-<style>
+<style lang="postcss">
 	:global(html) {
 		scrollbar-gutter: stable;
+	}
+	:global(body) {
+		padding: theme(padding.4);
 	}
 </style>

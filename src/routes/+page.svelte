@@ -30,3 +30,9 @@
 		</svelte:component>
 	{/each}
 </Presentation>
+
+<style lang="postcss">
+	:global(body) {
+		padding: theme(padding.0);
+	}
+</style>
