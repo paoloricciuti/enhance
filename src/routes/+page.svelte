@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Presentation, Slide } from '@components';
+	import { Presentation, Slide, Presenter } from '@components';
 	import type { Props } from '@slides/types';
 	import type { ComponentType, SvelteComponent } from 'svelte';
 	const slides = Object.entries(
@@ -19,9 +19,9 @@
 		}
 		return 0;
 	});
-	console.log(slides);
 </script>
 
+<Presenter />
 <Presentation>
 	{#each slides as slide_arr}
 		{@const [, slide] = slide_arr}
