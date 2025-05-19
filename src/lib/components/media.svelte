@@ -1,13 +1,18 @@
 <script lang="ts">
-	type Bool = boolean | null
-	type Element = 'video' | 'img' | 'iframe'
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	export let type: Element
-	export let src: string
-	export let autoplay: Bool = null
-	export let preload: Bool = null
+	type Bool = boolean | null;
+	type Element = 'video' | 'img' | 'iframe';
 
-	delete $$restProps.class
+	interface Props extends HTMLAttributes<HTMLElement> {
+		type: Element;
+		src: string;
+		autoplay?: Bool;
+		preload?: Bool;
+		children?: import('svelte').Snippet;
+	}
+
+	let { type, src, autoplay = null, preload = null, children, ...rest }: Props = $props();
 </script>
 
 <svelte:element
@@ -15,8 +20,8 @@
 	data-src={src}
 	data-autoplay={autoplay}
 	data-prelod={preload}
-	class={$$props.class || ''}
-	{...$$restProps}
+	class={rest.class || ''}
+	{...rest}
 >
-	<slot />
+	{@render children?.()}
 </svelte:element>

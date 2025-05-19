@@ -10,14 +10,15 @@
 </script>
 
 <NoSsr>
-	<a
-		slot="fallback"
-		href="/dialog-right/dialog"
-		class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-3
-	font-medium leading-none shadow hover:opacity-75"
-	>
-		Open Dialog
-	</a>
+	{#snippet fallback()}
+		<a
+			href="/dialog-right/dialog"
+			class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-3
+		font-medium leading-none shadow hover:opacity-75"
+		>
+			Open Dialog
+		</a>
+	{/snippet}
 	<button
 		{...$trigger}
 		use:trigger
@@ -34,7 +35,7 @@
 				use:overlay
 				class="fixed inset-0 z-50 bg-black/50"
 				transition:fade={{ duration: 150 }}
-			/>
+			></div>
 			<div
 				class="fixed left-[50%] top-[50%] z-50 max-h-[85vh] w-[90vw]
 			  max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export const props: Props = {
 		animate: true
 	};
@@ -15,7 +15,7 @@
 		{`<script lang="ts">
 	import Select from './Select.svelte';
 	import Button from './Button.svelte';
-	export let form;
+	let { form } = $props();
 <\/script>
 
 <form method="post">
@@ -30,7 +30,6 @@
 		</a>
 	</strong>
 {/if}
-
 `}
 	</Code>
 	<Compare title="Normal Input" src="/combobox-right"></Compare>

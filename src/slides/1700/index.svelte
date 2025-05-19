@@ -1,7 +1,10 @@
 <script lang="ts">
 	import Code from '@lib/components/code.svelte';
 	import Compare from '@lib/components/compare.svelte';
+	import Notes from '@lib/components/notes.svelte';
 </script>
+
+<Notes>Don't use dialogs for very important informations.</Notes>
 
 <div class="grid gap-8 text-2xl">
 	<Code lang="svelte">

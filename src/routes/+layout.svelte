@@ -1,6 +1,11 @@
 <script lang="ts">
 	import '@styles/tailwind.css';
 	import { onMount } from 'svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	onMount(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -9,7 +14,7 @@
 	});
 </script>
 
-<slot />
+{@render children?.()}
 
 <style lang="postcss">
 	:global(html) {

@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export const props: Props = {
 		animate: true
 	};
@@ -20,7 +20,8 @@ export function load({ url: { searchParams } }) {
 		obj.title === search
 	);
 	return { show };
-}`}
+}
+`}
 	</Code>
 	<Compare title="Normal Input" src="/normal-input-wrong" />
 </div>

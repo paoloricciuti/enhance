@@ -26,7 +26,7 @@
 </div>
 
 <style>
-	blockquote:has(.current-fragment) {
+	blockquote:has(:global(.current-fragment)) {
 		color: rgb(255 255 255 / 0.3);
 	}
 	:global(.fragment.enhance.visible.current-fragment) {

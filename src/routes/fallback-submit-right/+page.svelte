@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 </script>
 
 <form class="flex gap-2" data-sveltekit-keepfocus>
@@ -7,7 +7,7 @@
 		autocomplete="off"
 		class="shadow-md w-full p-2 border-[1px] border-slate-200"
 		name="search"
-		on:input={(e) => {
+		oninput={(e) => {
 			if (e.target instanceof HTMLInputElement) {
 				e.target.form?.requestSubmit();
 			}

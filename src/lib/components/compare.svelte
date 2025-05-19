@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	export let title: string;
-	export let src: string;
-	export let vertical = false;
+	interface Props {
+		title: string;
+		src: string;
+		vertical?: boolean;
+	}
 
-	onMount(() => {});
+	let { title, src, vertical = false }: Props = $props();
 </script>
 
 <div
@@ -25,7 +26,7 @@
 		url="https://no-js"
 		style="--bw-background: #eee; --bw-shadow-hsl: 0deg 0% 0%"
 	>
-		<iframe {title} {src} sandbox="allow-forms"></iframe>
+		<iframe {title} {src} sandbox="allow-forms allow-scripts"></iframe>
 	</browser-window>
 </div>
 

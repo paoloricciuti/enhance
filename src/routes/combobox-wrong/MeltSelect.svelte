@@ -3,8 +3,12 @@
 	import { fly } from 'svelte/transition';
 	import type { Tutorial } from './tutorials';
 
-	export let options: Array<Tutorial>;
-	export let name = '';
+	interface Props {
+		options: Array<Tutorial>;
+		name?: string;
+	}
+
+	let { options, name = '' }: Props = $props();
 
 	const toOption = (tutorial: Tutorial): ComboboxOptionProps<Tutorial> => ({
 		value: tutorial,
@@ -19,19 +23,23 @@
 		defaultSelected: toOption(options[0])
 	});
 
-	$: if (!$open) {
-		$inputValue = $selected?.label ?? '';
-	}
+	$effect(() => {
+		if (!$open) {
+			$inputValue = $selected?.label ?? '';
+		}
+	});
 
-	$: filteredOptions = $touchedInput
-		? options.filter(({ title, section }) => {
-				const normalizedInput = $inputValue.toLowerCase();
-				return (
-					title.toLowerCase().includes(normalizedInput) ||
-					section.toLowerCase().includes(normalizedInput)
-				);
-		  })
-		: options;
+	let filteredOptions = $derived(
+		$touchedInput
+			? options.filter(({ title, section }) => {
+					const normalizedInput = $inputValue.toLowerCase();
+					return (
+						title.toLowerCase().includes(normalizedInput) ||
+						section.toLowerCase().includes(normalizedInput)
+					);
+				})
+			: options
+	);
 </script>
 
 <div class="input-label-wrapper">
@@ -39,7 +47,7 @@
 </div>
 {#if $open}
 	<ul class="list" {...$menu} use:menu transition:fly={{ duration: 150, y: -5 }}>
-		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+		<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 		<div class="list-wrapper" tabindex="0">
 			{#each filteredOptions as manga, index (index)}
 				<li {...$option(toOption(manga))} use:option class="item">

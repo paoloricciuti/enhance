@@ -11,9 +11,9 @@
 <\/script>
 
 <NoSSR>
-	<a slot="fallback" href="/dialog">
-		Open Dialog
-	</a>
+	{#snippet fallback()}
+		<a href="/dialog">Open Dialog</a>
+	{/snippet}
 	<!-- this will open the dialog -->
 	<button
 		{...$trigger}

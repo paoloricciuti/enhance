@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Select from './Select.svelte';
-	export let form;
+	let { form } = $props();
 </script>
 
 <form method="post" class="flex items-center">

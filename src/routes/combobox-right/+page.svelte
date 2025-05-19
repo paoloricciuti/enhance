@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Select from './Select.svelte';
-	export let form;
+	let { form } = $props();
 </script>
 
 <form method="post" class="flex items-center">
 	<Select />
-	<button>
+	<button aria-label="close">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"

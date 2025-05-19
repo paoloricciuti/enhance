@@ -1,13 +1,13 @@
 <script lang="ts">
-	export let type = 'h2'
+	import type { HTMLAttributes } from 'svelte/elements';
+	interface Props extends HTMLAttributes<HTMLElement> {
+		type?: string;
+		children?: import('svelte').Snippet;
+	}
 
-	delete $$restProps.class
+	let { type = 'h2', children, ...rest }: Props = $props();
 </script>
 
-<svelte:element
-	this={type}
-	class="r-fit-text {$$props.class || ''}"
-	{...$$restProps}
->
-	<slot />
+<svelte:element this={type} {...rest} class="r-fit-text {rest.class || ''}">
+	{@render children?.()}
 </svelte:element>

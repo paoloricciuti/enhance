@@ -1,5 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 	const links = ['home', 'about', 'contact'];
 </script>
 
@@ -12,7 +17,7 @@
 </nav>
 <hr />
 <main class="p-4">
-	<slot />
+	{@render children?.()}
 </main>
 <hr />
 <p class="text-center">Join my newsletter</p>

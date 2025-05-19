@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	import type { Props } from '@slides/types';
 	import enhance from './enhance.gif';
 	import Notes from '@lib/components/notes.svelte';

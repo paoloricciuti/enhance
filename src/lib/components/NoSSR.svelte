@@ -1,5 +1,10 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	let { fallback, children }: { fallback?: Snippet; children?: Snippet } = $props();
+</script>
+
 {#await Promise.resolve()}
-	<slot name="fallback" />
+	{@render fallback?.()}
 {:then}
-	<slot />
+	{@render children?.()}
 {/await}

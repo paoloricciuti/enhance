@@ -1,7 +1,7 @@
 <script lang="ts">
 	import InputAutocomplete from './InputAutocomplete.svelte';
 
-	export let data;
+	let { data } = $props();
 </script>
 
 <form class="grid gap-2">

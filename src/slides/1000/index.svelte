@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export const props: Props = {
 		animate: true
 	};
@@ -14,12 +14,12 @@
 	<Code lang="svelte">
 		{`<script lang="ts">
 	import Button from './Button.svelte';
-	export let data;
+	let { data } = $props();
 <\/script>
 
 <form data-sveltekit-keepfocus>
 	<input name="search"
-		on:input={(e) => {
+		oninput={(e) => {
 				e.target.form?.requestSubmit();
 		}} /\>
 	<Button /\>

@@ -25,9 +25,10 @@
 <Presentation>
 	{#each slides as slide_arr}
 		{@const [, slide] = slide_arr}
-		<svelte:component this={slide.component ?? Slide} {...slide.props ?? {}}>
-			<svelte:component this={slide.default} />
-		</svelte:component>
+		{@const SvelteComponent_1 = slide.component ?? Slide}
+		<SvelteComponent_1 {...slide.props ?? {}}>
+			<slide.default />
+		</SvelteComponent_1>
 	{/each}
 </Presentation>
 

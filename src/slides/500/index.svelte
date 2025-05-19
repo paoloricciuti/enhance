@@ -1,14 +1,16 @@
 <script lang="ts">
 	import Code from '@lib/components/code.svelte';
+	import Notes from '@lib/components/notes.svelte';
 </script>
+
+<Notes>Explain `+page.svelte`;</Notes>
 
 <div class="text-2xl flex gap-2">
 	<Code file="+page.svelte" lang="svelte">
 		{`<script lang="ts">
-	import { enhance } from '$app/forms';
 	import InputAutocomplete from './InputAutocomplete.svelte';
 
-	export let form;
+	let { data } = $props();
 <\/script>
 
 <form>
@@ -28,12 +30,12 @@
 	</Code>
 	<Code file="InputAutocomplete.svelte" lang="svelte">
 		{`<script lang="ts">
-	let suggestions: string[] = [];
-	async function fectch_suggestions() {
+	let suggestions: string[] = $state([]);
+	async function fetch_suggestions() {
 		suggestions = await fetch(\`./autocomplete?query=\${value}\`)
 				.then((res) => res.json());
 	}
-	let value = '';
+	let value = $state('');
 </scr` +
 			`ipt>
 
@@ -42,11 +44,11 @@
 		autocomplete="off"
 		name="search"
 		bind:value
-		on:input={fectch_suggestions}
+		oninput={fetch_suggestions}
 	/\>
 	<ul>
 		{#each suggestions as suggestion}
-			<li><button on:click={() => {
+			<li><button onclick={() => {
 				value = suggestion;
 				suggestions = [];
 			}}>

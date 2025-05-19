@@ -11,11 +11,12 @@
 <\/script>
 
 <NoSSR>
-	<NormalSelect 
-		slot="fallback"
-		options={tutorials}
-		name="tutorial"
-	/\>
+	{#snippet fallback()}
+		<NormalSelect 
+			options={tutorials}
+			name="tutorial"
+		/\>
+	{/snippet}
 	<MeltSelect options={tutorials} name="tutorial" /\>
 </NoSSR>
 `}

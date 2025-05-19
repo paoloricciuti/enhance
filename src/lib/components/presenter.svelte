@@ -7,32 +7,32 @@
 				try {
 					const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 					video.srcObject = stream;
-				} catch (e) {
+				} catch {
 					/**empty*/
 				}
 			}
 		})();
 	}
-	let top = 20;
-	let left = 20;
-	let scale = 1;
-	let updating: null | { x: number; y: number } = null;
+	let top = $state(20);
+	let left = $state(20);
+	let scale = $state(1);
+	let updating: null | { x: number; y: number } = $state(null);
 
 	const active = browser && new URLSearchParams(window.location.search).get('presenter') !== null;
 </script>
 
 {#if active}
 	<video
-		on:mousedown={(e) => {
+		onmousedown={(e) => {
 			updating = {
 				x: e.pageX,
 				y: e.pageY
 			};
 		}}
-		on:mouseup={() => {
+		onmouseup={() => {
 			updating = null;
 		}}
-		on:mousemove={(e) => {
+		onmousemove={(e) => {
 			if (!updating) return;
 			const { pageX, pageY } = e;
 			left += pageX - updating.x;
@@ -42,7 +42,7 @@
 				y: pageY
 			};
 		}}
-		on:wheel={(e) => {
+		onwheel={(e) => {
 			if (e.deltaY > 0) {
 				scale += 0.1;
 			} else {

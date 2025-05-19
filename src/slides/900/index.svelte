@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export const props: Props = {
 		animate: true
 	};
@@ -13,12 +13,12 @@
 <div class="grid gap-8 text-2xl">
 	<Code lang="svelte">
 		{`<script lang="ts">
-	export let data;
+	let { data } = $props();
 <\/script>
 
 <form data-sveltekit-keepfocus>
 	<input name="search"
-		on:input={(e) => {
+		oninput={(e) => {
 				e.target.form?.requestSubmit();
 		}} /\>
 </form>

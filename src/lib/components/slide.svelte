@@ -1,8 +1,10 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	let index = 0;
 </script>
 
 <script lang="ts">
+	import type { HTMLAttributes } from 'svelte/elements';
+
 	import { createEventDispatcher } from 'svelte';
 	import { navigation } from '@stores/navigation';
 
@@ -10,26 +12,51 @@
 	type StringOrNull = string | null;
 	type Transition = 'none' | 'fade' | 'slide' | 'convex' | 'concave' | 'zoom' | null;
 
-	export let animate: Bool = null;
-	export let animateEasing: StringOrNull = null;
-	export let animateUnmatched: Bool = null;
-	export let animateId: StringOrNull = null;
-	export let animateRestart: Bool = null;
-	export let background: StringOrNull = null;
-	export let gradient: StringOrNull = null;
-	export let image: StringOrNull = null;
-	export let video: StringOrNull = null;
-	export let iframe: StringOrNull = null;
-	export let interactive: Bool = null;
-	export let transition: Transition = null;
+	interface Props extends HTMLAttributes<HTMLElement> {
+		animate?: Bool;
+		animateEasing?: StringOrNull;
+		animateUnmatched?: Bool;
+		animateId?: StringOrNull;
+		animateRestart?: Bool;
+		background?: StringOrNull;
+		gradient?: StringOrNull;
+		image?: StringOrNull;
+		video?: StringOrNull;
+		iframe?: StringOrNull;
+		interactive?: Bool;
+		transition?: Transition;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		animate = null,
+		animateEasing = null,
+		animateUnmatched = null,
+		animateId = null,
+		animateRestart = null,
+		background = null,
+		gradient = null,
+		image = null,
+		video = null,
+		iframe = null,
+		interactive = null,
+		transition = null,
+		children,
+		...rest
+	}: Props = $props();
 
 	const dispatch = createEventDispatcher();
 	const slideIndex = index++;
 
-	$: enter = $navigation.currentSlide === slideIndex;
-	$: enter ? dispatch('in') : dispatch('out');
+	let enter = $derived($navigation.currentSlide === slideIndex);
 
-	delete $$restProps.class;
+	$effect(() => {
+		if (enter) {
+			dispatch('in');
+		} else {
+			dispatch('out');
+		}
+	});
 </script>
 
 <section
@@ -45,10 +72,9 @@
 	data-background-iframe={iframe}
 	data-background-interactive={interactive}
 	data-transition={transition}
-	class={$$props.class || ''}
-	{...$$restProps}
+	{...rest}
 >
-	<slot />
+	{@render children?.()}
 </section>
 
 <style>

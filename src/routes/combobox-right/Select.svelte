@@ -7,5 +7,7 @@
 
 <NoSsr>
 	<MeltSelect options={tutorials} name="tutorial" />
-	<NormalSelect slot="fallback" options={tutorials} name="tutorial" />
+	{#snippet fallback()}
+		<NormalSelect options={tutorials} name="tutorial" />
+	{/snippet}
 </NoSsr>

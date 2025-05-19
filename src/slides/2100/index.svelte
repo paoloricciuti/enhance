@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
 	export const props: Props = {
 		animate: true
 	};
@@ -39,10 +39,12 @@
 	async default(){
 		// do your subscription
 	}
-}`}
+}
+`}
 			</Code>
 			<Code file="/subscribe/+page.svelte" lang="svelte">
-				{`Thanks for subscribing!`}
+				{`Thanks for subscribing!
+`}
 			</Code>
 		</div>
 	</div>

@@ -1,8 +1,12 @@
 <script lang="ts">
 	import type { Tutorial } from './tutorials';
 
-	export let options: Array<Tutorial>;
-	export let name = '';
+	interface Props {
+		options: Array<Tutorial>;
+		name?: string;
+	}
+
+	let { options, name = '' }: Props = $props();
 </script>
 
 <div class="wrapper">

@@ -6,13 +6,15 @@
 <div class="grid gap-8 text-2xl">
 	<Code lang="svelte">
 		{`<script lang="ts">
-	function remove_class(node: HTMLElement, to_remove: string){
-		node.classList.remove(to_remove);
+	function remove_class(to_remove: string){
+		return (node: HTMLElement)=>{
+			node.classList.remove(to_remove);
+		}
 	}
 <\/script>
 <div 
 	class="no-js"
-	use:remove_class={"no-js"}
+	{@attach remove_class("no-js")}
 >
 	Styled differently when JS load!
 </div>

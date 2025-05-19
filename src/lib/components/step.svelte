@@ -1,27 +1,55 @@
 <script lang="ts">
-	export let type = 'p'
-	export let order: string | null = null
-	export let fadeIn = false
-	export let fadeOut = false
-	export let fadeUp = false
-	export let fadeDown = false
-	export let fadeLeft = false
-	export let fadeRight = false
-	export let fadeInThenOut = false
-	export let currentVisible = false
-	export let fadeInThenSemiOut = false
-	export let semiFadeOut = false
-	export let highlightRed = false
-	export let highlightGreen = false
-	export let highlightBlue = false
-	export let highlightCurrentRed = false
-	export let highlightCurrentGreen = false
-	export let highlightCurrentBlue = false
-	export let grow = false
-	export let shrink = false
-	export let strike = false
+	import type { HTMLAttributes } from 'svelte/elements';
+	interface Props extends HTMLAttributes<HTMLElement> {
+		type?: string;
+		order?: string | null;
+		fadeIn?: boolean;
+		fadeOut?: boolean;
+		fadeUp?: boolean;
+		fadeDown?: boolean;
+		fadeLeft?: boolean;
+		fadeRight?: boolean;
+		fadeInThenOut?: boolean;
+		currentVisible?: boolean;
+		fadeInThenSemiOut?: boolean;
+		semiFadeOut?: boolean;
+		highlightRed?: boolean;
+		highlightGreen?: boolean;
+		highlightBlue?: boolean;
+		highlightCurrentRed?: boolean;
+		highlightCurrentGreen?: boolean;
+		highlightCurrentBlue?: boolean;
+		grow?: boolean;
+		shrink?: boolean;
+		strike?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	delete $$restProps.class
+	let {
+		type = 'p',
+		order = null,
+		fadeIn = false,
+		fadeOut = false,
+		fadeUp = false,
+		fadeDown = false,
+		fadeLeft = false,
+		fadeRight = false,
+		fadeInThenOut = false,
+		currentVisible = false,
+		fadeInThenSemiOut = false,
+		semiFadeOut = false,
+		highlightRed = false,
+		highlightGreen = false,
+		highlightBlue = false,
+		highlightCurrentRed = false,
+		highlightCurrentGreen = false,
+		highlightCurrentBlue = false,
+		grow = false,
+		shrink = false,
+		strike = false,
+		children,
+		...rest
+	}: Props = $props();
 </script>
 
 <svelte:element
@@ -45,9 +73,9 @@
 	class:grow
 	class:shrink
 	class:strike
-	class="fragment {$$props.class || ''}"
 	data-fragment-index={order}
-	{...$$restProps}
+	{...rest}
+	class="fragment {rest.class || ''}"
 >
-	<slot />
+	{@render children?.()}
 </svelte:element>
