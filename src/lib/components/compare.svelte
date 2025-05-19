@@ -26,7 +26,7 @@
 		url="https://no-js"
 		style="--bw-background: #eee; --bw-shadow-hsl: 0deg 0% 0%"
 	>
-		<iframe {title} {src} sandbox="allow-forms allow-scripts"></iframe>
+		<iframe {title} {src} sandbox="allow-forms"></iframe>
 	</browser-window>
 </div>
 
