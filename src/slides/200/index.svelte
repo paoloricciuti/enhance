@@ -69,7 +69,7 @@
 			</li>
 		</Step>
 		<Step>
-			<li>👨🏻‍💻 Fullstack Software Engineer at Mainmatter</li>
+			<li>👨🏻‍💻 Senior Software Engineer at Mainmatter</li>
 		</Step>
 	</ul>
 	<div class="flex flex-col items-center gap-8 w-[90%]">
