@@ -2,6 +2,7 @@
 	import Step from '@lib/components/step.svelte';
 	import me from './me.jpg';
 	import subscription from './subscription.png';
+	import workshops from './workshops.png';
 	import Notes from '@lib/components/notes.svelte';
 </script>
 
@@ -71,8 +72,34 @@
 			<li>👨🏻‍💻 Fullstack Software Engineer at Mainmatter</li>
 		</Step>
 	</ul>
-	<div class="flex flex-col items-center gap-8">
+	<div class="flex flex-col items-center gap-8 w-[90%]">
+		<div class="flex h-1/5 gap-4 justify-between">
+			<img
+				class="h-full w-full object-contain"
+				src={subscription}
+				alt="QR code for svelte subscription"
+			/>
+			<div class="workshops h-full w-full grid relative grid-cols-1 grid-rows-1">
+				<Step class="absolute right-0 -z-10">
+					<div
+						class="text-gray-50 bg-[#ff3e00] grid place-items-center right-0 font-bold text-xl p-4 rounded-lg font-mono"
+					>
+						TECHCAMP25
+					</div>
+				</Step>
+				<img class="h-full w-full object-contain" src={workshops} alt="QR code for workshops" />
+			</div>
+		</div>
 		<img class="rounded-full h-1/3" src={me} alt="Paolo Ricciuti" />
-		<img class="h-1/5" src={subscription} alt="QR code for svelte subscription" />
 	</div>
 </div>
+
+<style>
+	.workshops :global(.fragment) {
+		transform-origin: 0 0;
+		transform: rotate(90deg) translateX(110%);
+	}
+	.workshops :global(.fragment.visible) {
+		transform: rotate(0deg) translateX(110%);
+	}
+</style>
