@@ -12,7 +12,7 @@
 				e.target.form?.requestSubmit();
 			}
 		}}
-	/><button
+	/><button aria-label="Submit"
 		><svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"

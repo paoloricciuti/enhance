@@ -10,7 +10,7 @@
 	let count = $state(initial);
 <\/script>
 
-<button on:click={() => count++}>
+<button onclick={() => count++}>
 	{count}
 </button>
 
