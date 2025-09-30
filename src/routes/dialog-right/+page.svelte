@@ -16,7 +16,7 @@
 			class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-3
 		font-medium leading-none shadow hover:opacity-75"
 		>
-			Open Dialog
+			Login
 		</a>
 	{/snippet}
 	<button
@@ -25,7 +25,7 @@
 		class="inline-flex items-center justify-center rounded-xl bg-white px-4 py-3
 	font-medium leading-none shadow hover:opacity-75"
 	>
-		Open Dialog
+		Login
 	</button>
 
 	<div {...$portalled} use:portalled>
@@ -43,7 +43,7 @@
 				{...$content}
 				use:content
 			>
-				Here's my content
+				Your login here
 				<button
 					{...$close}
 					use:close

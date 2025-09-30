@@ -29,7 +29,11 @@ export const actions = {
 
 {data.some_data}
 
-<form method="POST" use:enhance>
+<form 
+	method="POST"
+	use:enhance
+	action="?/change"
+>
 	<input name="some_input" />
 	<button type="submit">Submit</button>
 </form>

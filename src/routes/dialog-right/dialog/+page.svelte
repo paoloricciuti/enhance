@@ -1,4 +1,4 @@
-Here's my content
+Your login here
 <a
 	href="/dialog-right"
 	aria-label="close"
